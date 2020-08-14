@@ -7,13 +7,14 @@ module Administrate
       resources = Administrate::Search.new(scoped_resource,
                                            dashboard_class,
                                            search_term).run
-      resources = apply_collection_includes(resources)
-      resources = order.apply(resources)
+      all_resources = apply_collection_includes(resources)
+      resources = order.apply(all_resources)
       resources = resources.page(params[:_page]).per(records_per_page)
       page = Administrate::Page::Collection.new(dashboard, order: order)
 
       render locals: {
         resources: resources,
+        all_resources: all_resources,
         search_term: search_term,
         page: page,
         show_search_bar: show_search_bar?,
