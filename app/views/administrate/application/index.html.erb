@@ -32,7 +32,7 @@ It renders the `_table` partial to display details about the resources.
     <h1 class="main-content__page-title" id="page-title">
       <%= content_for(:title) %><br>
     </h1>
-    <p class="count f6 gray"><%= number_with_delimiter(all_resources.count) %></span>
+    <p class="count f6 gray"><%= number_with_delimiter(total_resources_count) %></span>
   </div>
 
   <% if show_search_bar %>
